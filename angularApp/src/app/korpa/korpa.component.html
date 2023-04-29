@@ -1,0 +1,102 @@
+<!--Korpa-->
+
+<div class="container">
+  <main>
+    <!-- <div class="py-5 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg>
+      <h2>Detalji narudžbe</h2>
+      <p class="lead">Unesite Vaše podatke kako bismo registrovali Vašu narudžbu.</p>
+    </div> -->
+
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Stanje u korpi</span>
+          <span class="badge bg-primary rounded-pill">{{this.korpa.length}}</span>
+        </h4>
+        <ul  class="list-group mb-3">
+
+          <li  *ngFor="let item of this.korpa" class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">{{item.suplement.naziv}}</h6>
+              <h6 class="my-0">x{{item.kolicina}}</h6>
+
+              <small class="text-muted">{{item.suplement.opis}}</small>
+              <p style="margin: 0 !important; padding: 0 !important;"><button class="buttonUkloni" (click)="UkloniIzKorpe(item)" >Ukloni iz korpe</button></p>
+            </div>
+            <span class="text-muted">{{item.suplement.cijena}}KM</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Ukupno</span>
+            <strong>{{this.cartTotal}}KM</strong>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Vaši podaci</h4>
+        <form class="needs-validation" novalidate="">
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="firstName" class="form-label">Ime</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+            </div>
+
+            <div class="col-12">
+              <label for="lastName" class="form-label">Prezime</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email <span class="text-muted">(Opcionalno)</span></label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Adresa</label>
+              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+
+          <div class="row gy-3">
+            <h4 class="mb-3">Podaci o kartici</h4>
+            <div class="col-12">
+              <label for="cc-name" class="form-label">Ime</label>
+              <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+            </div>
+
+            <div class="col-12">
+              <label for="cc-name" class="form-label">Prezime</label>
+              <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+            </div>
+
+            <div class="col-12">
+              <label for="cc-number" class="form-label">Broj kreditne kartice</label>
+              <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-expiration" class="form-label">Datum isteka</label>
+              <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-cvv" class="form-label">CVC</label>
+              <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <button class="my-3 w-100 btn btn-primary btn-lg" (click)="createOrder()" type="submit">Potvrda</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+</div>

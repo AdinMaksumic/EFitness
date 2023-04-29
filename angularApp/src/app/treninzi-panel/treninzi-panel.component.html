@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <img src="../../assets/people.png" width="70px" height="70px" alt="" srcset="">
+    <h2>Grupni treninzi</h2>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <table class="table">
+    <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Naziv kategorije</th>
+      <th scope="col">Datum treninga</th>
+      <th scope="col">Uredi</th>
+      <th scope="col">Obriši</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let x of treninziPodaci">
+      <th scope="row">{{x.id}}</th>
+      <td>{{x.naziv_kategorije}}</td>
+      <td>{{x.vrijeme_odrzavanja | date : 'dd.MM.yyyy'}}</td>
+      <td><button type="button" class="btn btn-outline-primary">Uredi</button></td>
+      <td><button type="button" class="btn btn-outline-danger">Obriši</button></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div> -->
+
+<div class="container" *ngIf="this.treninziPodaci.length == 0">
+  <app-loader></app-loader>
+</div>
+
+<div class="w3-container" style="margin-left: 10rem; margin-right: 10rem;" *ngFor="let x of treninziPodaci; let i=index">
+  <ul class="w3-ul w3-card-4" style="box-shadow:0 0px 0px 0 rgba(0,0,0,0.2), 0 0px 2px 0 rgba(0,0,0,0.19)">
+    <li class="w3-bar">
+      <span class="w3-bar-item w3-button w3-white w3-xlarge w3-right" (click)="Obrisi(x.id)">×</span>
+      <img [src]="getSlikaById(x.id)" class="w3-bar-item w3-hide-small" style="width:100px" height="70px">
+      <div class="w3-bar-item">
+        <span class="w3-large">{{x.naziv_kategorije}}</span><br>
+        <span>{{x.vrijeme_odrzavanja | date}}</span>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,4 @@
+﻿namespace eFitnessReport.Report.DataSet
+{
+}
+
